@@ -23,7 +23,8 @@ public class Main {
 		int loopWhile = 0;
 		String validacao;
 
-		do {
+		do {//proxima coisa a fazer é tirar essas coisas da main e colocar em outras classes, em arquivos separados
+		
 			System.out.println("Digite seus respectivos valores:");
 
 			while (true) {
