@@ -24,7 +24,7 @@ public class Main {
 		String validacao;
 
 		do {
-			System.out.println("Digite seus respectivos valores: (ou digite (sair))\n");
+			System.out.println("Digite seus respectivos valores:");
 
 			while (true) {
 				System.out.println("Digite um numero: ");
@@ -41,8 +41,10 @@ public class Main {
 					System.out.println("Entrada inválida do input " + input + "");
 				}
 			}
+			loopWhile = 0;
 			System.out.println("Escoha a operação matematico entre: + | - | / | * | ?");
 			loopDoWhile = scan.next();
+			scan.nextLine();// foi aqui que mudou, e parou de ter problemas de loop infinito
 
 			// scan.nextLine();
 			switch (loopDoWhile) {
