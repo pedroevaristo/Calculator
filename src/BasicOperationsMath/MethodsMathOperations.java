@@ -1,31 +1,47 @@
 package BasicOperationsMath;
 
+import java.util.List;
+
 public class MethodsMathOperations extends OperationsMath {
-	
-	@Override
-	public Double Sum(Double x, Double y) {
-		// TODO Auto-generated method stub
-		return x + y;
-	}
 
 	@Override
-	public Double Subtraction(Double x, Double y) {
+	public Double Sum(List<Double> validatorNumbers) {
 		// TODO Auto-generated method stub
-		return x - y;
-	}
-
-	@Override
-	public Double Multiplication(Double x, Double y) {
-		// TODO Auto-generated method stub
-		return x * y;
-	}
-
-	@Override
-	public Double Division(Double x, Double y) {
-		// TODO Auto-generated method stub
-		if(y <= 0) {
-			throw new ArithmeticException("Divisão por zero não permitida ");
+		double sumOfItems = 0;
+		for (Double items : validatorNumbers) {
+			sumOfItems += items;
 		}
-		return x/y;
+		return sumOfItems;
+	}
+
+	@Override
+	public Double Subtraction(List<Double> validatorNumbers) {
+		// TODO Auto-generated method stub
+		double subtractionOfItems = 0;
+		for (Double items : validatorNumbers) {
+			subtractionOfItems -= items;
+		}
+		return subtractionOfItems;
+	}
+
+	@Override
+	public Double Multiplication(List<Double> validatorNumbers) {
+		// TODO Auto-generated method stub
+		double multiplicationOfItems = 1;
+		for (Double items : validatorNumbers) {
+			multiplicationOfItems *= items;
+		}
+		return multiplicationOfItems;
+	}
+
+	@Override
+	public Double Division(List<Double> validatorNumbers) {
+		// TODO Auto-generated method stub
+		double divisionOfItems = 1;
+		for (Double items : validatorNumbers) {
+						
+			divisionOfItems /= items;
+		}
+		return divisionOfItems;
 	}
 }

@@ -2,9 +2,8 @@ package CalculatorJava;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
-
-
 
 import Validator.ValidatorFromInput;
 import BasicOperationsMath.MethodsMathOperations;
@@ -20,46 +19,64 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 
 		String loopDoWhile;
-		
+		int loopWhileInput = 2;
+		int loopWhile = 0;
 		String validacao;
 
 		do {
 			System.out.println("Digite seus respectivos valores: (ou digite (sair))\n");
-			
 
+			while (true) {
 				System.out.println("Digite um numero: ");
 				String input = scan.nextLine();
-				
-				if(input.equalsIgnoreCase("sair")) {
-					System.exit(0);
-				}
-		
-				validatorInput.add(input);
-				validator(validatorInput);
 
+				Optional<Double> receiveResult = validator.validatorInput(input);
+				if (receiveResult.isPresent()) {
+					validatorNumbers.add(receiveResult.get());
+					loopWhile++;
+					if (loopWhile == 2) {
+						break;
+					}
+				} else {
+					System.out.println("Entrada inválida do input " + input + "");
+				}
+			}
 			System.out.println("Escoha a operação matematico entre: + | - | / | * | ?");
 			loopDoWhile = scan.next();
 
 			// scan.nextLine();
 			switch (loopDoWhile) {
 			case "+":
-				System.out.println("O resultado da soma é " + mmo.Sum(validator, validator));
+
+				System.out.println("O resultado da soma é " + mmo.Sum(validatorNumbers));
+
 				break;
 			case "-":
-				System.out.println("O resultado da subtração é " + mmo.Subtraction(number1, number2));
+				System.out.println("O resultado da subtração é " + mmo.Subtraction(validatorNumbers));
 				break;
 			case "*":
-				System.out.println("O resultado da multiplicação é " + mmo.Multiplication(number1, number2));
+				System.out.println("O resultado da multiplicação é " + mmo.Multiplication(validatorNumbers));
 				break;
 			case "/":
-				System.out.println("O resultado da Divisão é " + mmo.Division(number1, number2));
+				System.out.println("O resultado da Divisão é " + mmo.Division(validatorNumbers));
 				break;
 			}
-			System.out.println("Deseja realizar outra operação ? (s/n): ");
-			loopDoWhile = scan.next();
+			while (true) {
+				System.out.println("Deseja realizar outra operação ? (s/n): ");
+
+				loopDoWhile = scan.nextLine().trim().toLowerCase();
+				if (loopDoWhile.equals("s") || loopDoWhile.equals("n")) {
+					break;
+				} else {
+					System.out.println("Entrada inválida. Digite 's' para sim ou 'n' para não.");
+				}
+
+			}
+			validatorNumbers.clear();
 		} while (!loopDoWhile.contentEquals("n"));
 
 		scan.close();
+		System.out.println("Programa encerrado.");
 	}
 
 }
