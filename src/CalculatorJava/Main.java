@@ -12,6 +12,8 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {// aqui é onde vai rodar todos os programas e receber os
 																// inputs
+		//proxima coisa a fazer é tirar essas coisas da main e colocar em outras classes, em arquivos separados
+		
 		MethodsMathOperations mmo = new MethodsMathOperations();
 		List<String> validatorInput = new ArrayList<String>();
 		List<Double> validatorNumbers = new ArrayList<Double>();
@@ -23,7 +25,7 @@ public class Main {
 		int loopWhile = 0;
 		String validacao;
 
-		do {//proxima coisa a fazer é tirar essas coisas da main e colocar em outras classes, em arquivos separados
+		do {
 		
 			System.out.println("Digite seus respectivos valores:");
 
