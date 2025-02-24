@@ -92,11 +92,10 @@ Instale my-project com npm
     
 ## Autores
 
-- [@octokatherine](https://www.github.com/octokatherine)
+- [@pedroevaristo](https://www.github.com/pedroevaristo)
 
 
 ## 🚀 Sobre mim
-Eu sou uma pessoa desenvolvedora full-stack...
 
 
 ## Feedback
