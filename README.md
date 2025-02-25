@@ -92,7 +92,7 @@ Instale my-project com npm
     
 ## Author
 
-- [@pedroevaristo]([https://www.github.com/pedroevaristo](https://www.linkedin.com/in/pedroeva/)
+- [@pedroevaristo]([https://www.github.com/pedroevaristo](https://www.linkedin.com/in/pedroeva))
 
 
 ## 🚀 About me
