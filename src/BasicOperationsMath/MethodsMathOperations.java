@@ -6,7 +6,7 @@ public class MethodsMathOperations extends OperationsMath {
 
 	@Override
 	public Double Sum(List<Double> validatorNumbers) {
-		// TODO Auto-generated method stub
+		
 		double sumOfItems = 0;
 		for (Double items : validatorNumbers) {
 			sumOfItems += items;
@@ -16,7 +16,7 @@ public class MethodsMathOperations extends OperationsMath {
 
 	@Override
 	public Double Subtraction(List<Double> validatorNumbers) {
-		// TODO Auto-generated method stub
+		
 		double subtractionOfItems = 0;
 		for (Double items : validatorNumbers) {
 			subtractionOfItems -= items;
@@ -26,7 +26,7 @@ public class MethodsMathOperations extends OperationsMath {
 
 	@Override
 	public Double Multiplication(List<Double> validatorNumbers) {
-		// TODO Auto-generated method stub
+		
 		double multiplicationOfItems = 1;
 		for (Double items : validatorNumbers) {
 			multiplicationOfItems *= items;
@@ -36,7 +36,7 @@ public class MethodsMathOperations extends OperationsMath {
 
 	@Override
 	public Double Division(List<Double> validatorNumbers) {
-		// TODO Auto-generated method stub
+		
 		double divisionOfItems = 1;
 		for (Double items : validatorNumbers) {
 						
