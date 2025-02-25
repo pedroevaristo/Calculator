@@ -71,17 +71,17 @@ In this moment I'm focusing to evolve the code and my concepts of programming. A
 O que você aprendeu construindo esse projeto? Quais desafios você enfrentou e como você superou-os?
 
 
-## Melhorias
+## Improvements
 
 Que melhorias você fez no seu código? Ex: refatorações, melhorias de performance, acessibilidade, etc
 
 
-## Documentação
+## Documentation
 
 [Documentação](https://link-da-documentação)
 
 
-## Instalação
+## Installation
 
 Instale my-project com npm
 
@@ -90,12 +90,12 @@ Instale my-project com npm
   cd my-project
 ```
     
-## Autores
+## Author
 
 - [@pedroevaristo](https://www.github.com/pedroevaristo)
 
 
-## 🚀 Sobre mim
+## 🚀 About me
 
 
 ## Feedback
