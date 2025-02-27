@@ -1,21 +1,31 @@
 package CalculatorJava;
 
+
+import BasicOperationsMath.MathOperation;
+import Validator.ValidatorFromInput;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.Map;
+import java.util.HashMap;
 
-import BasicOperationsMath.MethodsMathOperations;
-import Validator.ValidatorFromInput;
 
-public class AppCalculator {//é uma forma interessante de fazer. Do que em comparado o que eu imaginava que teria que ser
-	private final MethodsMathOperations mathOperations;
+
+public class AppCalculator {
+	
+	private final Map<String, MathOperation> operationsMap;
 	private final ValidatorFromInput validator;
-
-	public AppCalculator() {
-		this.mathOperations = new MethodsMathOperations();
-		this.validator = new ValidatorFromInput();
+	
+	//injetar Dependencias
+	public AppCalculator(Map<String, MathOperation> operationsMap, ValidatorFromInput validator) {
+		this.operationsMap = operationsMap;
+		this.validator = validator;
+		
 	}
+	
+
 
 	public void run() {
 		try (Scanner scan = new Scanner(System.in)) {
@@ -30,6 +40,7 @@ public class AppCalculator {//é uma forma interessante de fazer. Do que em comp
 		}
 		System.out.println("Programa encerrado");
 	}
+	
 
 	private List<Double> getNummbersFromUser(Scanner scan) { /* Saber a diferença entre Optional e List em metodos */
 		List<Double> numbers = new ArrayList<Double>();
@@ -67,21 +78,13 @@ public class AppCalculator {//é uma forma interessante de fazer. Do que em comp
 	}
 	
 	private void performOperations(List<Double> numbers, String operation) {
-		double result = 0;
-		switch(operation) {
-        case "+":
-            result = mathOperations.Sum(numbers);
-            break;
-        case "-":
-            result = mathOperations.Subtraction(numbers);
-            break;
-        case "*":
-            result = mathOperations.Multiplication(numbers);
-            break;
-        case "/":
-            result = mathOperations.Division(numbers);
-            break;
+		MathOperation mathOperation = operationsMap.get(operation);
+		if(mathOperation == null) {
+			System.out.println("Opção inválida" + operation);
+			return;
 		}
+		double result = mathOperation.calculate(numbers);
+		
 		System.out.println("O resultado do calculo é: "+ result);
 	}
 	
