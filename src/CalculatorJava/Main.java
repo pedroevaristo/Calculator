@@ -12,12 +12,13 @@ import java.util.HashMap;
 public class Main {
 	public static void main(String[]args){
 		try {
-			//criando as dependecias
+			//criando as dependecias preciso estudar 
+			//Qual é a função da Main ?
 			Map<String, MathOperation> operationsMap = new HashMap<>();
-			operationsMap.put("+", new AdditionOperation());
-			operationsMap.put("-", new SubstractionOperation());
-			operationsMap.put("*", new MultiplicationOperation());
-			operationsMap.put("/", new DivisionOperation());
+			operationsMap.put("+", new AdditionOperation());//Pattern Strategy
+			operationsMap.put("-", new SubstractionOperation());//Pattern Strategy
+			operationsMap.put("*", new MultiplicationOperation());//Pattern Strategy
+			operationsMap.put("/", new DivisionOperation());//Pattern Strategy
 			
 			ValidatorFromInput validator = new ValidatorFromInput();
 			
