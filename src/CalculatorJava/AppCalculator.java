@@ -25,14 +25,14 @@ public class AppCalculator {
 
 	}
 
-	public void run() {
+	public void run() throws Exception {
 		try (Scanner scan = new Scanner(System.in)) {
 			String loopDoWhile;
 			do {
 				List<Double> numbers = getNummbersFromUser(scan);
 				String operations = getOperationFromUser(scan);
 				performOperations(numbers, operations);
-				askForHistoricOfAllOperation(scan);
+				askForHistoricOperationOfSession(scan);
 				loopDoWhile = askToContinue(scan);
 			} while (loopDoWhile.equals("s"));
 		}
@@ -40,6 +40,7 @@ public class AppCalculator {
 		System.out.println("Programa encerrado");
 	}
 
+	
 	private List<Double> getNummbersFromUser(Scanner scan) { /* Saber a diferença entre Optional e List em metodos */
 		List<Double> numbers = new ArrayList<Double>();
 		int count = 0;
@@ -83,14 +84,15 @@ public class AppCalculator {
 		}
 		double result = mathOperation.calculate(numbers);
 
-		String operationCalculated = numbers.get(0) +" " + operation + " " +numbers.get(1) + " = " + result;
+		String operationCalculated = numbers.get(0) + " " + operation + " " + numbers.get(1) + " = " + result;
 
 		historicOperation.add(operationCalculated);
 		System.out.println("O resultado do calculo é: " + result);
 
 	}
 
-	private void askForHistoricOfAllOperation(Scanner scan) {//colocar os horarios nas operações que foram armazenados/feitas datetime 
+	private void askForHistoricOperationOfSession(Scanner scan) throws Exception {// colocar os horarios nas operações que foram
+																	// armazenados/feitas datetime
 		String response;
 		while (true) {
 			System.out.println("Quer ver o histórico das operações ?");
@@ -103,8 +105,8 @@ public class AppCalculator {
 			} else if (response.equals("n")) {
 				break;
 
-			}else {
-				System.out.println("Entrada inválida. Digite novamente");
+			} else {
+				throw new Exception("Entrada inválida. Digite novamente");
 			}
 		}
 	}
