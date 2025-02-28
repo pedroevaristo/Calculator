@@ -1,6 +1,5 @@
 package CalculatorJava;
 
-
 import BasicOperationsMath.MathOperation;
 import Validator.ValidatorFromInput;
 
@@ -10,22 +9,21 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
-
-
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class AppCalculator {
-	
+
 	private final Map<String, MathOperation> operationsMap;
 	private final ValidatorFromInput validator;
-	
-	//injetar Dependencias
+	private final Queue<String> historicOperation = new LinkedList<String>();
+
+	// injetar Dependencias
 	public AppCalculator(Map<String, MathOperation> operationsMap, ValidatorFromInput validator) {
 		this.operationsMap = operationsMap;
 		this.validator = validator;
-		
-	}
-	
 
+	}
 
 	public void run() {
 		try (Scanner scan = new Scanner(System.in)) {
@@ -34,13 +32,13 @@ public class AppCalculator {
 				List<Double> numbers = getNummbersFromUser(scan);
 				String operations = getOperationFromUser(scan);
 				performOperations(numbers, operations);
-				
+				askForHistoricOfAllOperation(scan);
 				loopDoWhile = askToContinue(scan);
 			} while (loopDoWhile.equals("s"));
 		}
+
 		System.out.println("Programa encerrado");
 	}
-	
 
 	private List<Double> getNummbersFromUser(Scanner scan) { /* Saber a diferença entre Optional e List em metodos */
 		List<Double> numbers = new ArrayList<Double>();
@@ -71,23 +69,45 @@ public class AppCalculator {
 			if (operation.matches("[+\\-*/]")) {
 				break;
 			} else {
-				System.out.println("OPeração inválida. Tente Novamente");
+				System.out.println("Operação inválida. Tente Novamente");
 			}
 		}
 		return operation;
 	}
-	
+
 	private void performOperations(List<Double> numbers, String operation) {
 		MathOperation mathOperation = operationsMap.get(operation);
-		if(mathOperation == null) {
+		if (mathOperation == null) {
 			System.out.println("Opção inválida" + operation);
 			return;
 		}
 		double result = mathOperation.calculate(numbers);
-		
-		System.out.println("O resultado do calculo é: "+ result);
+
+		String operationCalculated = numbers.get(0) +" " + operation + " " +numbers.get(1) + " = " + result;
+
+		historicOperation.add(operationCalculated);
+		System.out.println("O resultado do calculo é: " + result);
+
 	}
-	
+
+	private void askForHistoricOfAllOperation(Scanner scan) {//colocar os horarios nas operações que foram armazenados/feitas datetime 
+		String response;
+		while (true) {
+			System.out.println("Quer ver o histórico das operações ?");
+			response = scan.nextLine().trim().toLowerCase();
+			if (response.equals("s")) {
+				for (String historic : historicOperation) {
+					System.out.println(historic);
+				}
+				break;
+			} else if (response.equals("n")) {
+				break;
+
+			}else {
+				System.out.println("Entrada inválida. Digite novamente");
+			}
+		}
+	}
 
 	private String askToContinue(Scanner scan) {
 		String response;

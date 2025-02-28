@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Main {
 	public static void main(String[]args){
 		try {
-			//criando as instancias
+			//criando as dependecias
 			Map<String, MathOperation> operationsMap = new HashMap<>();
 			operationsMap.put("+", new AdditionOperation());
 			operationsMap.put("-", new SubstractionOperation());
@@ -21,7 +21,7 @@ public class Main {
 			
 			ValidatorFromInput validator = new ValidatorFromInput();
 			
-			AppCalculator calculator = new AppCalculator(operationsMap, validator);//injentando as intancias
+			AppCalculator calculator = new AppCalculator(operationsMap, validator);//injentando as dependecias
 			calculator.run();
 
 		} catch (Exception e) {
