@@ -74,7 +74,7 @@ In this moment I'm focusing to evolve the code and my concepts of programming. A
 
 
 
-## Melhorias
+## Improvements
 
 I will mention all the details as soon as possible.
 
