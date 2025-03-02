@@ -93,7 +93,7 @@ I will mention all the details as soon as possible.
     
 ## Autores
 
-- [@octokatherine](https://www.github.com/octokatherine)
+- [@pedroevaristo](https://www.github.com/pedroevaristo)
 
 
 ## 🚀 About me
