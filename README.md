@@ -68,46 +68,38 @@ In this moment I'm focusing to evolve the code and my concepts of programming. A
     - [ ] Set up continuous integration (CI) for automated testing and deployment
 ## learning
 
-O que você aprendeu construindo esse projeto? Quais desafios você enfrentou e como você superou-os?
+1. 
+2. 
+3. 
 
 
-## Improvements
 
-Que melhorias você fez no seu código? Ex: refatorações, melhorias de performance, acessibilidade, etc
+## Melhorias
+
+I will mention all the details as soon as possible.
 
 
 ## Documentation
 
-[Documentação](https://link-da-documentação)
+[Nothing for now](https://link-da-documentação)
 
 
-## Installation
+## Instalation
 
-Instale my-project com npm
 
 ```bash
-  npm install my-project
-  cd my-project
+    At the moment isn't possible to install
 ```
     
-## Author
+## Autores
 
-- [@pedroevaristo](https://www.linkedin.com/in/pedroeva)
+- [@octokatherine](https://www.github.com/octokatherine)
 
 
 ## 🚀 About me
+I'm 
 
 
 ## Feedback
-
-Se você tiver algum feedback, por favor nos deixe saber por meio de fake@fake.com
-
-
-## Etiquetas
-
-Adicione etiquetas de algum lugar, como: [shields.io](https://shields.io/)
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+If there any idea to do a improvement the code or if it is found a bug contact me through
 
