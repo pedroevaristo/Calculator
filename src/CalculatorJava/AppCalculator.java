@@ -29,7 +29,7 @@ public class AppCalculator {
 		try (Scanner scan = new Scanner(System.in)) {
 			String loopDoWhile;
 			do {
-				List<Double> numbers = getNummbersFromUser(scan);
+				List<Double> numbers = getExpressionNummbersFromUser(scan);
 				String operations = getOperationFromUser(scan);
 				performOperations(numbers, operations);
 				askForHistoricOperationOfSession(scan);
@@ -41,56 +41,19 @@ public class AppCalculator {
 	}
 
 	
-	private List<Double> getNummbersFromUser(Scanner scan) { /* Saber a diferença entre Optional e List em metodos */
-		List<Double> numbers = new ArrayList<Double>();
-		int count = 0;
+	private List<Double> getExpressionNummbersFromUser(Scanner scan) { 
+		
 
-		while (count < 2) {
+
+	
 			System.out.println("Digite um numero: ");
-			String input = scan.nextLine();
+			String input = scan.nextLine();// se possível reeber um x
 
-			Optional<Double> number = validator.validatorInput(input);
+			validator.convertMathExpressionInFixToPostFix(input);//2x+5=9
 
-			if (number.isPresent()) {
-				numbers.add(number.get());
-				count++;
-			} else {
-				System.out.println("Entrada inválida do input " + input + "");
-			}
-		}
-		return numbers;
+		
+		return null;
 	}
-
-	private String getOperationFromUser(Scanner scan) {
-		String operation;
-		while (true) {
-			System.out.println("Escoha a operação matematico entre: + | - | / | * | ?");
-			operation = scan.nextLine().trim();
-
-			if (operation.matches("[+\\-*/]")) {
-				break;
-			} else {
-				System.out.println("Operação inválida. Tente Novamente");
-			}
-		}
-		return operation;
-	}
-
-	private void performOperations(List<Double> numbers, String operation) {
-		MathOperation mathOperation = operationsMap.get(operation);
-		if (mathOperation == null) {
-			System.out.println("Opção inválida" + operation);
-			return;
-		}
-		double result = mathOperation.calculate(numbers);
-
-		String operationCalculated = numbers.get(0) + " " + operation + " " + numbers.get(1) + " = " + result;
-
-		historicOperation.add(operationCalculated);
-		System.out.println("O resultado do calculo é: " + result);
-
-	}
-
 	private void askForHistoricOperationOfSession(Scanner scan) throws Exception {// colocar os horarios nas operações que foram
 																	// armazenados/feitas datetime
 		String response;
