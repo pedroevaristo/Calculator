@@ -29,9 +29,9 @@ public class AppCalculator {
 		try (Scanner scan = new Scanner(System.in)) {
 			String loopDoWhile;
 			do {
-				List<Double> numbers = getExpressionNummbersFromUser(scan);
-				String operations = getOperationFromUser(scan);
-				performOperations(numbers, operations);
+				expressionPostFix = getExpressionNummbersFromUser(scan);
+				
+			
 				askForHistoricOperationOfSession(scan);
 				loopDoWhile = askToContinue(scan);
 			} while (loopDoWhile.equals("s"));
@@ -43,12 +43,15 @@ public class AppCalculator {
 	
 	private List<Double> getExpressionNummbersFromUser(Scanner scan) { 
 		
-
-
-	
 			System.out.println("Digite um numero: ");
 			String input = scan.nextLine();// se possível reeber um x
-
+			while(true) {
+				if(ValidatorFromInput.validatingExpressionMath(input)) {
+					
+				}else {
+					
+				}
+			}
 			validator.convertMathExpressionInFixToPostFix(input);//2x+5=9
 
 		

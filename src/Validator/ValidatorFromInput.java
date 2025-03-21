@@ -4,53 +4,56 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.Stack;
+import BasicOperationsMath.MathOperation;
 
 public class ValidatorFromInput {
-	private static int dictionarySignalMath(char signal) {
-		switch (signal) {
-
-		case '+':
-			return;
-		case '-':
-			return;
-		case '*':
-			return;
-		case '/':
-			return;
-		case '^':
-			return;
-		default:
-			return -1;
+	public static boolean validatingExpressionMath(String inputExpression) {
+		if(!areParenthesesBalanced(inputExpression)) {
+			System.out.println("Erro na digitação do parenteses");
+			return false;
 		}
+		if() {
+			
+		}
+		
+		return false;
+
 	}
 
-	private static boolean isSignal(char chr) {
-		return chr == '+' || chr == '-' || chr == '*' || chr == '/' || chr == '^';
-	}
+	private static boolean areParenthesesBalanced(String inputExpression) {
+		Stack<Character> stackToVerifyParentheses = new Stack<>();
 
-	private static boolean validatingCharacter(char chr) {
-		return Character.isLetterOrDigit(chr) || (dictionarySignalMath(chr) != -1) || chr == '(' || chr == ')';
-	}
-
-	public static String convertMathExpressionInFixToPostFix(String expression) {// 2x+5=9
-		StringBuilder output = new StringBuilder();
-		Stack<Character> stack = new Stack();
-
-		for (int index = 0; index < expression.length(); index++) {
-			char chr = expression.charAt(index);
-
-			if (!validatingCharacter(chr)) {
-					throw new IllegalArgumentException("Expressão inválida: caractere "+expression);
-			}
-			if(Character.isLetterOrDigit(chr)) {
-				output.append(chr);
+		for (int index = 0; index < inputExpression.length(); index++) {
+			char character = inputExpression.charAt(index);
+			if (character == '(') {
+				stackToVerifyParentheses.push(character);
+			} else if (character == ')') {
+				if (stackToVerifyParentheses.isEmpty() || stackToVerifyParentheses.pop() != '(') {
+					return false;
+				}
 			}
 		}
-		return null;
+		return stackToVerifyParentheses.isEmpty();
 	}
 
-	private boolean validatorExpressionPostFix() {
-
+	private static boolean areCorrectUseSignsOnExpression(String inputExpression) {
+		for(int index = 0; index < inputExpression.length(); ) {
+			char character = inputExpression.charAt(index);
+			
+			if(isOperator(character)) {
+				if(index == 0 || index == inputExpression.length() - 1) {
+					return false;
+				}
+			}
+			if() {
+				
+			}
+		}
+		return 
+	}
+	
+	private static boolean isOperator(char character) {
+		return character == '+' || character=='-' || character=='*' ||  character=='/';  
 	}
 
 }

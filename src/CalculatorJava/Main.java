@@ -4,7 +4,6 @@ import BasicOperationsMath.DivisionOperation;
 import BasicOperationsMath.MathOperation;
 import BasicOperationsMath.MultiplicationOperation;
 import BasicOperationsMath.SubstractionOperation;
-
 import Validator.ValidatorFromInput;
 
 import java.util.Map;
