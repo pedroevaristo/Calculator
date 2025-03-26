@@ -8,15 +8,20 @@ import BasicOperationsMath.MathOperation;
 
 public class ValidatorFromInput {
 	public static boolean validatingExpressionMath(String inputExpression) {
-		if(!areParenthesesBalanced(inputExpression)) {
+		if (!areParenthesesBalanced(inputExpression)) {
 			System.out.println("Erro na digitação do parenteses");
 			return false;
 		}
-		if() {
-			
+		if (!ifContainsInvalidCharacter(inputExpression)) {
+			//colocar uma mensagem de erro especifico ao metodo
+			return false;
 		}
-		
-		return false;
+		if(!areCorrectUseSignsOnExpression(inputExpression)) {
+			//colocar uma mensagem de erro especifico ao metodo
+			
+			return false;
+		}
+		return true;
 
 	}
 
@@ -36,24 +41,42 @@ public class ValidatorFromInput {
 		return stackToVerifyParentheses.isEmpty();
 	}
 
-	private static boolean areCorrectUseSignsOnExpression(String inputExpression) {
-		for(int index = 0; index < inputExpression.length(); ) {
+	private static boolean ifContainsInvalidCharacter(String inputExpression) {
+		for (int index = 0; index < inputExpression.length(); index++) {
 			char character = inputExpression.charAt(index);
-			
-			if(isOperator(character)) {
-				if(index == 0 || index == inputExpression.length() - 1) {
+			if (!validationIfExistsSignals(character)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+	private static boolean areCorrectUseSignsOnExpression(String inputExpression) {
+		for (int index = 0; index < inputExpression.length(); index++) {
+			char character = inputExpression.charAt(index);
+
+			if (isOperator(character)) {
+				if (index == 0 || index == inputExpression.length() - 1) {
 					return false;
 				}
 			}
-			if() {
-				
+			char nextCharacter = inputExpression.charAt(index + 1);
+			if (isOperator(nextCharacter)) {
+				return false;
 			}
 		}
-		return 
+		return true;
+	}
+
+	private static boolean isOperator(char character) {
+		return character == '+' || character == '-' || character == '*' || character == '/';
 	}
 	
-	private static boolean isOperator(char character) {
-		return character == '+' || character=='-' || character=='*' ||  character=='/';  
+
+	private static boolean validationIfExistsSignals(char character) {
+		return Character.isDigit(character) || character == '+' || character == '-' || character == '*'
+				|| character == '/' || character == '^' || character == '(' || character == ')';
 	}
 
 }

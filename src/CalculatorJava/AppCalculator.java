@@ -46,10 +46,8 @@ public class AppCalculator {
 			System.out.println("Digite um numero: ");
 			String input = scan.nextLine();// se possível reeber um x
 			while(true) {
-				if(ValidatorFromInput.validatingExpressionMath(input)) {
-					
-				}else {
-					
+				if(!ValidatorFromInput.validatingExpressionMath(input)) {
+					System.err.print("Há erros na expressão passada aqui");
 				}
 			}
 			validator.convertMathExpressionInFixToPostFix(input);//2x+5=9
