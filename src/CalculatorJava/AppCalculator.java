@@ -2,6 +2,7 @@ package CalculatorJava;
 
 import BasicOperationsMath.MathOperation;
 import Validator.ValidatorFromInput;
+import Algorithm.ShuntingYardAlgorthm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,8 @@ public class AppCalculator {
 		try (Scanner scan = new Scanner(System.in)) {
 			String loopDoWhile;
 			do {
-				expressionPostFix = getExpressionNummbersFromUser(scan);
-				
-			
+				getExpressionNummbersFromUser(scan);
+
 				askForHistoricOperationOfSession(scan);
 				loopDoWhile = askToContinue(scan);
 			} while (loopDoWhile.equals("s"));
@@ -40,23 +40,25 @@ public class AppCalculator {
 		System.out.println("Programa encerrado");
 	}
 
-	
-	private List<Double> getExpressionNummbersFromUser(Scanner scan) { 
-		
-			System.out.println("Digite um numero: ");
-			String input = scan.nextLine();// se possível reeber um x
-			while(true) {
-				if(!ValidatorFromInput.validatingExpressionMath(input)) {
-					System.err.print("Há erros na expressão passada aqui");
-				}
-			}
-			validator.convertMathExpressionInFixToPostFix(input);//2x+5=9
+	private List<Double> getExpressionNummbersFromUser(Scanner scan) {
 
-		
-		return null;
+		System.out.println("Digite um numero: ");
+		String input = scan.nextLine();// se possível reeber um x
+		while (true) {
+			if (!ValidatorFromInput.validatingExpressionMath(input)) {
+				System.err.print("Há erros na expressão passada aqui");
+			}
+
+			// corrigir essa parte do código para que não haja
+			ShuntingYardAlgorthm.shuntingYardAlgorithm(input);// 2x+5=9
+
+			return null;
+		}
 	}
-	private void askForHistoricOperationOfSession(Scanner scan) throws Exception {// colocar os horarios nas operações que foram
-																	// armazenados/feitas datetime
+
+	private void askForHistoricOperationOfSession(Scanner scan) throws Exception {// colocar os horarios nas operações
+																					// que foram
+		// armazenados/feitas datetime
 		String response;
 		while (true) {
 			System.out.println("Quer ver o histórico das operações ?");
