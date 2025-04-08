@@ -8,49 +8,56 @@
 	public class ShuntingYardAlgorthm {// aqui vai ter o algoritmo que vai converter e verificar as expressão passad no
 										// input
 		private final Map<String, MathOperation> operationMap;
-		private final Map<Character, Integer> initializeOperation;
+		private final Map<Character, Integer> initializeLocalOperationMath;
 	
-		public ShuntingYardAlgorthm(Map<String, MathOperation> operationMap, Map<Character, Integer> initializeOperation) {
+		public ShuntingYardAlgorthm(Map<String, MathOperation> operationMap, Map<Character, Integer> initializeLocalOperationMath) {
 			this.operationMap = operationMap;
-			this.initializeOperation = new HashMap<>();
+			this.initializeLocalOperationMath = new HashMap<>();
 			
 			initializeOperations();
 		}
 		
 		private void initializeOperations() {
-			initializeOperation.put('+', 1);
-			initializeOperation.put('-', 1);
-			initializeOperation.put('*', 2);
-			initializeOperation.put('/', 2);
-			initializeOperation.put('^', 3);
-			
+			initializeLocalOperationMath.put('+', 1);
+			initializeLocalOperationMath.put('-', 1);
+			initializeLocalOperationMath.put('*', 2);
+			initializeLocalOperationMath.put('/', 2);
+			initializeLocalOperationMath.put('^', 3);		
 			
 		}
 		
 		private int dictionarySignalMath(char signal) {
-			return initializeOperation.getOrDefault(signal,-1);
+			return initializeLocalOperationMath.getOrDefault(signal,-1);
 		}
 	
-		private static boolean validatingCharacter(char chr) {
-			return Character.isLetterOrDigit(chr) || (dictionarySignalMath(chr) != -1) || chr == '(' || chr == ')';
+		private boolean validatingCharacter(char chr) {
+			return Character.isLetterOrDigit(chr) || (dictionarySignalMath(chr) != -1) || chr == '(' || chr == ')' || chr == '=';
 		}
 	
-		public static String shuntingYardAlgorithm(String expression) {// 2x+5=9, x^8,
+		public String shuntingYardAlgorithm(String expression) {// 2x+5=9, x^8,
+			for(int i =0; i< expression.length(); i++) {
+				char character = expression.charAt(i);
+				if(!validatingCharacter(character)) {
+					throw new IllegalArgumentException("Caracter inválido" + character);				
+				}
+			}
+			
+			
 			StringBuilder output = new StringBuilder();
 			Stack<Character> stack = new Stack();
 	
 			for (int index = 0; index < expression.length(); index++) {
-				char chr = expression.charAt(index);
+				char character = expression.charAt(index);
 	
-				if (Character.isLetterOrDigit(chr)) {
+				if (Character.isLetterOrDigit(character)) {
 	
-					output.append(chr);
+					output.append(character);
 	
-				} else if (chr == '(') {
+				} else if (character == '(') {
 	
-					stack.add(chr);
+					stack.add(character);
 	
-				} else if (chr == ')') {
+				} else if (character == ')') {
 	
 					while (!stack.isEmpty() && stack.peek() != '(') {
 	
@@ -59,10 +66,10 @@
 					stack.pop();
 	
 				} else {
-					while (!stack.isEmpty() && dictionarySignalMath(chr) <= dictionarySignalMath(stack.peek())) {
+					while (!stack.isEmpty() && dictionarySignalMath(character) <= dictionarySignalMath(stack.peek())) {
 						output.append(stack.pop());
 					}
-					stack.push(chr);
+					stack.push(character);
 				}
 				
 			}
