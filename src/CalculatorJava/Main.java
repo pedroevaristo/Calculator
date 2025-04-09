@@ -5,6 +5,7 @@ import BasicOperationsMath.MathOperation;
 import BasicOperationsMath.MultiplicationOperation;
 import BasicOperationsMath.SubstractionOperation;
 import Validator.ValidatorFromInput;
+import Algorithm.ShuntingYardAlgorthm;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -21,7 +22,9 @@ public class Main {
 			
 			ValidatorFromInput validator = new ValidatorFromInput();
 			
-			AppCalculator calculator = new AppCalculator(operationsMap, validator);//injentando as dependecias
+			ShuntingYardAlgorthm sya =  new ShuntingYardAlgorthm(operationsMap, null);
+			
+			AppCalculator calculator = new AppCalculator(operationsMap, validator, sya);//injentando as dependecias
 			calculator.run();
 
 		} catch (Exception e) {

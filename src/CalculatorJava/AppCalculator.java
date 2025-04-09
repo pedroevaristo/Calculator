@@ -18,12 +18,13 @@ public class AppCalculator {
 	private final Map<String, MathOperation> operationsMap;
 	private final ValidatorFromInput validator;
 	private final Queue<String> historicOperation = new LinkedList<String>();
+	private final ShuntingYardAlgorthm sya; 
 
 	// injetar Dependencias
-	public AppCalculator(Map<String, MathOperation> operationsMap, ValidatorFromInput validator) {
+	public AppCalculator(Map<String, MathOperation> operationsMap, ValidatorFromInput validator, ShuntingYardAlgorthm sya) {
 		this.operationsMap = operationsMap;
 		this.validator = validator;
-
+		this.sya = sya;
 	}
 
 	public void run() throws Exception {
@@ -40,6 +41,9 @@ public class AppCalculator {
 		System.out.println("Programa encerrado");
 	}
 
+	
+	
+	
 	private List<Double> getExpressionNummbersFromUser(Scanner scan) {
 
 		System.out.println("Digite um numero: ");
@@ -50,7 +54,8 @@ public class AppCalculator {
 			}
 
 			// corrigir essa parte do código para que não haja
-			ShuntingYardAlgorthm.shuntingYardAlgorithm(input);// 2x+5=9
+			String evaluatePostFixExpression = sya.shuntingYardAlgorithm(input);// 2x+5=9
+			
 
 			return null;
 		}
