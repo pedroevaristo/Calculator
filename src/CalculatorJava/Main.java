@@ -1,30 +1,22 @@
 package CalculatorJava;
-import BasicOperationsMath.AdditionOperation;
-import BasicOperationsMath.DivisionOperation;
-import BasicOperationsMath.MathOperation;
-import BasicOperationsMath.MultiplicationOperation;
-import BasicOperationsMath.SubstractionOperation;
 import Validator.ValidatorFromInput;
-import Algorithm.ShuntingYardAlgorthm;
 
 import java.util.Map;
+
+import Algorithm.ShuntingYardAlgorthm;
+
 import java.util.HashMap;
 public class Main {
 	public static void main(String[]args){
 		try {
 			//criando as dependecias preciso estudar 
 			//Qual é a função da Main ?
-			Map<String, MathOperation> operationsMap = new HashMap<>();
-			operationsMap.put("+", new AdditionOperation());//Pattern Strategy
-			operationsMap.put("-", new SubstractionOperation());//Pattern Strategy
-			operationsMap.put("*", new MultiplicationOperation());//Pattern Strategy
-			operationsMap.put("/", new DivisionOperation());//Pattern Strategy
-			
 			ValidatorFromInput validator = new ValidatorFromInput();
+			ShuntingYardAlgorthm shuntingYard = new ShuntingYardAlgorthm();
+			//ValidateThePostFix
+			//Tokenization
 			
-			ShuntingYardAlgorthm sya =  new ShuntingYardAlgorthm(operationsMap, null);
-			
-			AppCalculator calculator = new AppCalculator(operationsMap, validator, sya);//injentando as dependecias
+			AppCalculator calculator = new AppCalculator(validator, shuntingYard);//injentando as dependecias
 			calculator.run();
 
 		} catch (Exception e) {

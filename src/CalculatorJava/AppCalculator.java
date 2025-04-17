@@ -14,17 +14,20 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 public class AppCalculator {
-
-	private final Map<String, MathOperation> operationsMap;
 	private final ValidatorFromInput validator;
+	private final ShuntingYardAlgorthm shuntingYard;
+	private final ValidateThePostFix postFixNotation;
+	//private final Tokenization;
+	
 	private final Queue<String> historicOperation = new LinkedList<String>();
-	private final ShuntingYardAlgorthm sya; 
+	
 
 	// injetar Dependencias
-	public AppCalculator(Map<String, MathOperation> operationsMap, ValidatorFromInput validator, ShuntingYardAlgorthm sya) {
-		this.operationsMap = operationsMap;
+	public AppCalculator(ValidatorFromInput validator, ShuntingYardAlgorthm shuntingYard) {
 		this.validator = validator;
-		this.sya = sya;
+		this.shuntingYard = shuntingYard;
+		//this.postFixNotation =   postFixNotation;
+		//this.token =token; 
 	}
 
 	public void run() throws Exception {
@@ -41,9 +44,6 @@ public class AppCalculator {
 		System.out.println("Programa encerrado");
 	}
 
-	
-	
-	
 	private List<Double> getExpressionNummbersFromUser(Scanner scan) {
 
 		System.out.println("Digite um numero: ");
@@ -55,7 +55,6 @@ public class AppCalculator {
 
 			// corrigir essa parte do código para que não haja
 			String evaluatePostFixExpression = sya.shuntingYardAlgorithm(input);// 2x+5=9
-			
 
 			return null;
 		}

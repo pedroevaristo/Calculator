@@ -18,7 +18,7 @@ public class ShuntingYardAlgorthm {// aqui vai ter o algoritmo que vai converter
 	// private final Map<String, MathOperation> operationMap;
 	// private final Map<Character, Integer> initializeLocalOperationMath;
 
-	public String shuntingYardAlgorithm(String expression) {// 2x+5=9, x^8,
+	public List<String> shuntingYardAlgorithm(String expression) {// 2x+5=9, x^8,
 
 		Deque<String> operatorsStack = new ArrayDeque<>();
 		List<String> outputPostFix= new ArrayList<>();
@@ -48,7 +48,7 @@ public class ShuntingYardAlgorthm {// aqui vai ter o algoritmo que vai converter
 			}
 
 		}
-		return ;
+		return outputPostFix;
 	}
 
 }
