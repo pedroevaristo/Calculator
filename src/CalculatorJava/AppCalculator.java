@@ -23,11 +23,11 @@ public class AppCalculator {
 	
 
 	// injetar Dependencias
-	public AppCalculator(ValidatorFromInput validator, ShuntingYardAlgorthm shuntingYard) {
+	public AppCalculator(ValidatorFromInput validator) {
 		this.validator = validator;
-		this.shuntingYard = shuntingYard;
-		//this.postFixNotation =   postFixNotation;
-		//this.token =token; 
+		this.shuntingYard = new ShuntingYardAlgorthm();
+		//this.postFixNotation = new postFixNotation;
+		//this.token = new token; 
 	}
 
 	public void run() throws Exception {

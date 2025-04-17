@@ -12,11 +12,8 @@ public class Main {
 			//criando as dependecias preciso estudar 
 			//Qual é a função da Main ?
 			ValidatorFromInput validator = new ValidatorFromInput();
-			ShuntingYardAlgorthm shuntingYard = new ShuntingYardAlgorthm();
-			//ValidateThePostFix
-			//Tokenization
 			
-			AppCalculator calculator = new AppCalculator(validator, shuntingYard);//injentando as dependecias
+			AppCalculator calculator = new AppCalculator(validator);//injentando as dependecias
 			calculator.run();
 
 		} catch (Exception e) {
