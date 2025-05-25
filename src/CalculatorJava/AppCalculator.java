@@ -54,7 +54,7 @@ public class AppCalculator {
 			}
 
 			// corrigir essa parte do código para que não haja
-			String evaluatePostFixExpression = sya.shuntingYardAlgorithm(input);// 2x+5=9
+			shuntingYardAlgorithm(input);// 2x+5=9
 
 			return null;
 		}
